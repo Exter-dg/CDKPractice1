@@ -5,6 +5,9 @@ import { Construct } from 'constructs';
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class LambdaStack extends cdk.Stack {
+
+    public readonly lambdaFunc: lambda.Function;
+
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -19,11 +22,7 @@ export class LambdaStack extends cdk.Stack {
     });
 
 
-    // Export lambda function
-    new cdk.CfnOutput(this, 'crudLambdaFuncId', {
-        value: crudLambdaFunc.functionArn,
-        exportName: 'crudLambdaFuncName'
-    });
+    this.lambdaFunc = crudLambdaFunc;
 
   }
 }

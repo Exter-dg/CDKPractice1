@@ -2,6 +2,8 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { UserDataCdkStack } from '../lib/user_data_cdk-stack';
+import { LambdaStack } from '../lib/LambdaStack';
+import { DatabaseStack } from '../lib/DatabaseStack';
 
 
 /*
@@ -14,4 +16,10 @@ import { UserDataCdkStack } from '../lib/user_data_cdk-stack';
 */
 
 const app = new cdk.App();
-new UserDataCdkStack(app, 'UserDataCdkStack', {});
+// new UserDataCdkStack(app, 'UserDataCdkStack', {});
+
+// Call the dynamo db stack
+new DatabaseStack(app, 'DatabaseStack');
+
+// Call the lambda stack
+new LambdaStack(app, 'LambdaStack');

@@ -2,8 +2,7 @@
   "app": "npx ts-node --prefer-ts-exts bin/user_data_cdk.ts",
   "watch": {
     "include": [
-      "**"
-    ],
+      "**"    ],
     "exclude": [
       "README.md",
       "cdk*.json",

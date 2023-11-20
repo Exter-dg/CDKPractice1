@@ -24,7 +24,10 @@ const app = new cdk.App();
 const dynamoDbStack = new DatabaseStack(app, 'DatabaseStack');
 
 // Call the lambda stack
-const lambdaStack = new LambdaStack(app, 'LambdaStack');
+const lambdaStack = new LambdaStack(app, 'LambdaStack', {
+  // Pass table name to lambda stack
+  tableName: dynamoDbStack.table.tableName
+});
 
 // Call the API Stack
 new ApiStack(app, 'RestApiStack', {

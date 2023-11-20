@@ -1,4 +1,6 @@
-GET https://r8mmd3hhuj.execute-api.us-east-1.amazonaws.com/prod/
+@url = https://r8mmd3hhuj.execute-api.us-east-1.amazonaws.com/prod/
+
+GET {{url}}
 
 ###
 

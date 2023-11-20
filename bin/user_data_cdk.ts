@@ -5,6 +5,7 @@ import { UserDataCdkStack } from '../lib/user_data_cdk-stack';
 import { LambdaStack } from '../lib/LambdaStack';
 import { DatabaseStack } from '../lib/DatabaseStack';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { ApiStack } from '../lib/ApiStack';
 
 
 /*
@@ -24,6 +25,11 @@ const dynamoDbStack = new DatabaseStack(app, 'DatabaseStack');
 
 // Call the lambda stack
 const lambdaStack = new LambdaStack(app, 'LambdaStack');
+
+// Call the API Stack
+new ApiStack(app, 'RestApiStack', {
+  lambdaIntegration: lambdaStack.lambdaIntegration
+});
 
 // Allow our lambda function to perform crud ops on dynamodb table
 lambdaStack.lambdaFunc.addToRolePolicy(new PolicyStatement({

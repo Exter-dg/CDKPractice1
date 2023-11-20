@@ -1,4 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
+import { LambdaIntegration } from 'aws-cdk-lib/aws-apigateway';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 
 import { Construct } from 'constructs';
@@ -7,6 +8,7 @@ import { Construct } from 'constructs';
 export class LambdaStack extends cdk.Stack {
 
     public readonly lambdaFunc: lambda.Function;
+    public readonly lambdaIntegration: LambdaIntegration;
 
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -21,6 +23,7 @@ export class LambdaStack extends cdk.Stack {
         functionName: 'http-crud-tutorial-function'
     });
 
+    this.lambdaIntegration = new LambdaIntegration(crudLambdaFunc);
 
     this.lambdaFunc = crudLambdaFunc;
 
